@@ -44,6 +44,154 @@ const user = {
   avatar: "https://www.placecage.com/200/300"
 };
 
+const styles = {
+  header: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between',
+    backgroundColor: '#e5e5e5',
+  },
+  nav: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-evenly',
+    textAlign: 'center',
+  },
+  navText: {
+    fontSize: '18px',
+    margin: '5px',
+  },
+  ul: {
+    listStyle: 'none',
+    margin: '0',
+    padding: '0',
+  },
+  li: {
+    border: 'black solid 1px',
+    display: 'flex',
+    alignContent: 'space-around',
+    width: '100%',
+    height: '75px',
+    padding: '10px',
+    fontSize: '24px',
+  },
+  text: {
+    fontFamily: '"Ropa Sans", sans-serif',
+  },
+  footer: {
+    width: '100%',
+    backgroundColor: '#e5e5e5',
+    display: 'flex',
+    justifyContent: 'space-around',
+  },
+  newTaskButton: {
+    height: '100px',
+    width: '225px',
+    margin: 'auto',
+    marginTop: '75px',
+    marginBottom: '30px',
+    fontFamily: '"Barlow", sans-serif',
+    letterSpacing: '.05em',
+    textTransform: 'uppercase',
+    fontSize: '36px',
+    color: 'white',
+    borderRadius: '20px',
+    borderColor: 'black',
+    backgroundColor: 'black',
+  },
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  userInfo: {
+    margin: 'auto',
+    flexFlow: 'column wrap',
+    alignContent: 'space-around',
+  },
+  userPicture: {
+    width: '50px',
+    height: '50px',
+    backgroundColor: 'gray',
+    margin: 'auto',
+    marginTop: '10px',
+    textAlign: 'center',
+  },
+  userName: {
+    flexFlow: 'row wrap',
+    margin: '5px',
+    fontSize: '14px',
+    textAlign: 'center',
+  },
+  navButton: {
+    display: 'flex',
+    flexFlow: 'column wrap',
+    margin: '5px 0px',
+    width: '90px',
+  },
+  navLogo: {
+    backgroundColor: 'gray',
+    height: '50px',
+    width: '50px',
+    margin: 'auto',
+  },
+  list: {
+    width: '100%',
+    fontFamily: '"Ropa Sans", sans-serif',
+  },
+  listTitle: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    border: 'black solid 1px',
+    height: '95px',
+    fontSize: '36px',
+    padding: '20px',
+    margin: 'auto 0',
+    textTransform: 'uppercase',
+    lineHeight: '55px',
+  },
+  listIcon: {
+    width: '40px',
+    height: '40px',
+    margin: 'auto 40px',
+    backgroundColor: 'gray',
+  },
+  checkboxText: {
+    margin: 'auto 0',
+  },
+  aid: {
+    textAlign: 'center',
+    width: '100%',
+    height: '130px',
+    display: 'flex',
+    flexFlow: 'column',
+    justifyContent: 'space-between',
+    backgroundColor: '#5f5f5f',
+    color: 'white',
+  },
+  aidWrapper: {
+    width: '105px',
+  },
+  aidSwipe: {
+    display: 'flex',
+    flexFlow: 'row',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    height: '75px',
+    textAlign: 'center',
+    fontSize: '18px',
+  },
+  aidEdge: {
+    margin: '0',
+    height: '20px',
+    textTransform: 'uppercase',
+    fontFamily: '"Barlow", sans-serif',
+  },
+  handIcon: {
+    backgroundColor: 'gray',
+  },
+}
+
 function App() {
   return (
     <div className="main">
