@@ -26,7 +26,10 @@ function App() {
       </div>
     </nav>
     <div class="now list">
-      <h2 class="list-title">Now</h2>
+      <div class="list-title">
+        <h2>Now</h2>
+        <div class="list-icon">Icon</div>
+      </div>
       <ul>
         <li>
           <input class="checkbox" type="checkbox" name="finished"></input>
@@ -44,7 +47,7 @@ function App() {
     <div>
       <p>Swipe Left to add a Day to the Deadline</p>
     </div>
-    <div>Hand Icon</div>
+    <div class="hand-icon">Hand Icon</div>
     <div>
       <p>Check or Swipe Right to Complete</p>
     </div>
@@ -52,7 +55,10 @@ function App() {
     <p class="aid-delete">Long press to start deleting</p>
     </div>
     <div class="later list">
-      <h2 class="list-title">Later</h2>
+    <div class="list-title">
+        <h2>Later</h2>
+        <div class="list-icon">Icon</div>
+      </div>
       <ul>
       <li>
           <input class="checkbox" type="checkbox" name="finished"></input>
