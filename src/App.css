@@ -1,38 +1,156 @@
-.App {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+header h1 {
+  font-family: 'Modak', cursive;
+  font-size: 42px;
+  text-transform: uppercase;
+  margin: 10px;
+  color: black;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: black;
+}
+nav {
+  border: 1px black solid;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav p {
+  font-size: 18px;
+  margin: 5px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+div {
+  border: 1px black solid;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  border: black solid 1px;
+  display: flex;
+  align-content: space-around;
+  width: 100%;
+  height: 75px;
+  padding: 10px;
+  font-size: 24px;
+}
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+  margin: 20px;
+}
+p, h2 {
+  font-family: 'Ropa Sans', sans-serif;
+}
+footer button {
+  height: 100px;
+  width: 225px;
+  margin: auto;
+  margin-top: 75px;
+  margin-bottom: 30px;
+  font-family: 'Barlow', sans-serif;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  font-size: 36px;
+  color: white;
+  border-radius: 20px;
+  border-color: black;
+  background-color: black;
+}
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.user-info {
+    flex-flow: column wrap;
+    justify-content: space-around;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user-picture {
+  width: 50px;
+  height: 50px;
+  background-color: gray;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+}
+.user-name {
+  flex-flow: row wrap;
+  margin: 5px;
+  font-size: 14px;
+}
+.nav-button {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 5px 0px;
+  width: 90px;
+}
+.nav-logo {
+  background-color: gray;
+  height: 50px;
+  width: 50px;
+  margin: auto;
+}
+.list {
+  width: 100%;
+  font-family: 'Ropa Sans', sans-serif;
+}
+.list-title {
+  border: black solid 1px;
+  height: 95px;
+  font-size: 36px;
+  padding: 20px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.checkbox-text
+{
+  height: fit-content;
+  margin: auto 0;
+}
+.aid {
+  text-align: center;
+  width: 100%;
+  height: 130px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.aid-swipe div {
+  width: 105px;
+}
+.aid-swipe {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-content: center;
+  height: 75px;
+}
+.aid-swipe p {
+  text-align: center;
+  font-size: 18px;
+}
+.aid-delete, .aid-arrow{
+  margin: 0;
+  height: 20px;
+  text-transform: uppercase;
+  font-family: 'Barlow', sans-serif;
 }
