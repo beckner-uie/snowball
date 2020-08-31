@@ -1,73 +1,116 @@
 import React from 'react';
 import './App.css';
 
+let nowList = [{
+  id: 1,
+  title: "Item One",
+  description: "your description",
+  completed: false
+},
+{
+  id: 2,
+  title: "Item Two",
+  description: "your description",
+  completed: false
+},
+{
+  id: 3,
+  title: "Item Three",
+  description: "your description",
+  completed: false
+}];
+let laterList = [{
+  id: 1,
+  title: "Item One",
+  description: "your description",
+  completed: false
+},
+{
+  id: 2,
+  title: "Item Two",
+  description: "your description",
+  completed: false
+},
+{
+  id: 3,
+  title: "Item Three",
+  description: "your description",
+  completed: false
+}];
+
+const user = {
+  name: "Casey Beckner",
+  id: 1,
+  avatar: "https://www.placecage.com/200/300"
+};
+
 function App() {
   return (
-    <div class="main">
+    <div className="main">
     <header>
       <h1>Snowball</h1>
-      <div class="user-info">
-        <div class="user-picture">avatar</div>
-        <p class="user-name">My Name Here</p>
+      <div className="user-info">
+        <img src={user.avatar}></img>
+        <p className="user-name">{user.name}</p>
       </div>
     </header>
     <nav>
-      <div class="nav-button">
+      <div className="nav-button">
         <p>History</p>
-        <div class="nav-logo">Logo</div>
+        <div className="nav-logo">Logo</div>
       </div>
-      <div class="nav-button">
+      <div className="nav-button">
         <p>Delete</p>
-        <div class="nav-logo">Logo</div>
+        <div className="nav-logo">Logo</div>
       </div>
-      <div class="nav-button">
+      <div className="nav-button">
         <p>Settings</p>
-        <div class="nav-logo">Logo</div>
+        <div className="nav-logo">Logo</div>
       </div>
     </nav>
-    <div class="now list">
-      <div class="list-title">
+    <div className="now list">
+      <div className="list-title">
         <h2>Now</h2>
-        <div class="list-icon">Icon</div>
+        <div className="list-icon">Icon</div>
       </div>
       <ul>
-        <li>
-          <input class="checkbox" type="checkbox" name="finished"></input>
-          <p class="checkbox-text">Item One</p>
-        </li>
-        <li>
-          <input class="checkbox" type="checkbox" name="finished"></input>
-          <p class="checkbox-text">Item Two</p>
-        </li>
+      {nowList.map((nowTask) => {
+          return (
+          <li>
+          <input className="checkbox" type="checkbox" name="finished" checked={nowTask.completed}></input>
+          <p className="checkbox-text">{nowTask.title}</p>
+          </li>
+          );
+        })}
       </ul>
     </div>
-    <div class="aid">
-    <div class="aid-arrow"> --- swipe arrow ---</div>
-    <div class="aid-swipe">
+    <div className="aid">
+    <div className="aid-arrow"> --- swipe arrow ---</div>
+    <div className="aid-swipe">
     <div>
       <p>Swipe Left to add a Day to the Deadline</p>
     </div>
-    <div class="hand-icon">Hand Icon</div>
+    <div className="hand-icon">Hand Icon</div>
     <div>
       <p>Check or Swipe Right to Complete</p>
     </div>
     </div>
-    <p class="aid-delete">Long press to start deleting</p>
+    <p className="aid-delete">Long press to start deleting</p>
     </div>
-    <div class="later list">
-    <div class="list-title">
+    <div className="later list">
+    <div className="list-title">
         <h2>Later</h2>
-        <div class="list-icon">Icon</div>
+        <div className="list-icon">Icon</div>
       </div>
       <ul>
-      <li>
-          <input class="checkbox" type="checkbox" name="finished"></input>
-          <p class="checkbox-text">Item One</p>
-        </li>
-        <li>
-          <input class="checkbox" type="checkbox" name="finished"></input>
-          <p class="checkbox-text">Item Two</p>
-        </li>
+        {laterList.map((laterTask) => {
+          return (
+          <li>
+          <input className="checkbox" type="checkbox" name="finished" checked={laterTask.completed}></input>
+          <p className="checkbox-text">{laterTask.title}</p>
+          </li>
+          );
+        })}
       </ul>
     </div>
     <footer>
@@ -76,5 +119,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
