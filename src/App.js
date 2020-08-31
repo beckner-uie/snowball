@@ -105,9 +105,11 @@ const styles = {
     alignItems: 'center',
   },
   userInfo: {
+    display: 'flex',
     margin: 'auto',
     flexFlow: 'column wrap',
     alignContent: 'space-around',
+    justifyContent: 'space-around',
   },
   userPicture: {
     width: '50px',
@@ -116,6 +118,7 @@ const styles = {
     margin: 'auto',
     marginTop: '10px',
     textAlign: 'center',
+    alignSelf: 'center',
   },
   userName: {
     flexFlow: 'row wrap',
@@ -139,10 +142,12 @@ const styles = {
     width: '100%',
     fontFamily: '"Ropa Sans", sans-serif',
   },
-  listTitle: {
+  listTitleWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
     border: 'black solid 1px',
+  },
+  listTitle: {
     height: '95px',
     fontSize: '36px',
     padding: '20px',
@@ -195,74 +200,74 @@ const styles = {
 function App() {
   return (
     <div className="main">
-    <header>
+    <header style={styles.header}>
       <h1>Snowball</h1>
-      <div className="user-info">
-        <img src={user.avatar}></img>
-        <p className="user-name">{user.name}</p>
+      <div style={styles.userInfo} className="user-info">
+        <img style={styles.userPicture} src={user.avatar} alt="your avatar"></img>
+        <p style={Object.assign({}, styles.userName, styles.text)} className="user-name">{user.name}</p>
       </div>
     </header>
-    <nav>
-      <div className="nav-button">
-        <p>History</p>
-        <div className="nav-logo">Logo</div>
+    <nav style={styles.nav}>
+      <div className="nav-button" style={styles.navButton}>
+        <p style={Object.assign({}, styles.navText, styles.text)}>History</p>
+        <div className="nav-logo" style={styles.navLogo}>Logo</div>
       </div>
-      <div className="nav-button">
-        <p>Delete</p>
-        <div className="nav-logo">Logo</div>
+      <div className="nav-button" style={styles.navButton}>
+        <p style={Object.assign({}, styles.navText, styles.text)}>Delete</p>
+        <div className="nav-logo" style={styles.navLogo}>Logo</div>
       </div>
-      <div className="nav-button">
-        <p>Settings</p>
-        <div className="nav-logo">Logo</div>
+      <div className="nav-button" style={styles.navButton}>
+        <p style={Object.assign({}, styles.navText, styles.text)}>Settings</p>
+        <div className="nav-logo" style={styles.navLogo}>Logo</div>
       </div>
     </nav>
-    <div className="now list">
-      <div className="list-title">
-        <h2>Now</h2>
-        <div className="list-icon">Icon</div>
+    <div className="now list" style={styles.list}>
+      <div className="list-title" style={styles.listTitleWrapper}>
+        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Now</h2>
+        <div className="list-icon" style={styles.listIcon}>Icon</div>
       </div>
-      <ul>
+      <ul style={styles.ul}>
       {nowList.map((nowTask) => {
           return (
-          <li>
-          <input className="checkbox" type="checkbox" name="finished" checked={nowTask.completed}></input>
-          <p className="checkbox-text">{nowTask.title}</p>
+          <li style={styles.li}>
+          <input style={styles.input} className="checkbox" type="checkbox" name="finished" checked={nowTask.completed}></input>
+          <p style={styles.checkboxText} className="checkbox-text">{nowTask.title}</p>
           </li>
           );
         })}
       </ul>
     </div>
-    <div className="aid">
-    <div className="aid-arrow"> --- swipe arrow ---</div>
-    <div className="aid-swipe">
-    <div>
+    <div className="aid" style={styles.aid}>
+    <div className="aid-arrow" style={styles.aidEdge}> --- swipe arrow ---</div>
+    <div className="aid-swipe" style={styles.aidSwipe}>
+    <div style={styles.aidWrapper}>
       <p>Swipe Left to add a Day to the Deadline</p>
     </div>
-    <div className="hand-icon">Hand Icon</div>
-    <div>
-      <p>Check or Swipe Right to Complete</p>
+    <div className="hand-icon" style={Object.assign({}, styles.aidWrapper, styles.handIcon)}>Hand Icon</div>
+    <div style={styles.aidWrapper}>
+      <p style={styles.text}>Check or Swipe Right to Complete</p>
     </div>
     </div>
-    <p className="aid-delete">Long press to start deleting</p>
+    <p className="aid-delete" style={styles.aidEdge}>Long press to start deleting</p>
     </div>
-    <div className="later list">
-    <div className="list-title">
-        <h2>Later</h2>
-        <div className="list-icon">Icon</div>
+    <div className="later list" style={styles.list}>
+    <div className="list-title" style={styles.listTitleWrapper}>
+        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Later</h2>
+        <div className="list-icon" style={styles.listIcon}>Icon</div>
       </div>
-      <ul>
+      <ul style={styles.ul}>
         {laterList.map((laterTask) => {
           return (
-          <li>
-          <input className="checkbox" type="checkbox" name="finished" checked={laterTask.completed}></input>
-          <p className="checkbox-text">{laterTask.title}</p>
+          <li style={styles.li}>
+          <input style={styles.input} className="checkbox" type="checkbox" name="finished" checked={laterTask.completed}></input>
+          <p style={styles.checkboxText} className="checkbox-text">{laterTask.title}</p>
           </li>
           );
         })}
       </ul>
     </div>
-    <footer>
-      <button>New Task</button>
+    <footer style={styles.footer}>
+      <button style={styles.newTaskButton}>New Task</button>
     </footer>
     </div>
   );
