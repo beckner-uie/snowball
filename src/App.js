@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import Task from src/components/Task.js;
+import List from src/components/List.js;
 
 let nowList = [{
   id: 1,
@@ -37,7 +39,16 @@ let laterList = [{
   description: "your description",
   completed: false
 }];
-
+const lists = [{
+now: {
+  name: "Now",
+  list: nowList
+},
+later: {
+  name: "Later",
+  list: laterList
+}
+}];
 const user = {
   name: "Casey Beckner",
   id: 1,
@@ -60,20 +71,6 @@ const styles = {
   navText: {
     fontSize: '18px',
     margin: '5px',
-  },
-  ul: {
-    listStyle: 'none',
-    margin: '0',
-    padding: '0',
-  },
-  li: {
-    border: 'black solid 1px',
-    display: 'flex',
-    alignContent: 'space-around',
-    width: '100%',
-    height: '75px',
-    padding: '10px',
-    fontSize: '24px',
   },
   text: {
     fontFamily: '"Ropa Sans", sans-serif',
@@ -138,32 +135,7 @@ const styles = {
     width: '50px',
     margin: 'auto',
   },
-  list: {
-    width: '100%',
-    fontFamily: '"Ropa Sans", sans-serif',
-  },
-  listTitleWrapper: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    border: 'black solid 1px',
-  },
-  listTitle: {
-    height: '95px',
-    fontSize: '36px',
-    padding: '20px',
-    margin: 'auto 0',
-    textTransform: 'uppercase',
-    lineHeight: '55px',
-  },
-  listIcon: {
-    width: '40px',
-    height: '40px',
-    margin: 'auto 40px',
-    backgroundColor: 'gray',
-  },
-  checkboxText: {
-    margin: 'auto 0',
-  },
+
   aid: {
     textAlign: 'center',
     width: '100%',
@@ -200,72 +172,40 @@ const styles = {
 function App() {
   return (
     <div className="main">
-    <header style={styles.header}>
-      <h1>Snowball</h1>
-      <div style={styles.userInfo} className="user-info">
-        <img style={styles.userPicture} src={user.avatar} alt="your avatar"></img>
-        <p style={Object.assign({}, styles.userName, styles.text)} className="user-name">{user.name}</p>
+      <header style={styles.header}>
+        <h1>Snowball</h1>
+        <div style={styles.userInfo} className="user-info">
+          <img style={styles.userPicture} src={user.avatar} alt="your avatar"></img>
+          <p style={Object.assign({}, styles.userName, styles.text)} className="user-name">{user.name}</p>
+        </div>
+      </header>
+      <nav style={styles.nav}>
+        <div className="nav-button" style={styles.navButton}>
+          <p style={Object.assign({}, styles.navText, styles.text)}>History</p>
+          <div className="nav-logo" style={styles.navLogo}>Logo</div>
+        </div>
+        <div className="nav-button" style={styles.navButton}>
+          <p style={Object.assign({}, styles.navText, styles.text)}>Delete</p>
+          <div className="nav-logo" style={styles.navLogo}>Logo</div>
+        </div>
+        <div className="nav-button" style={styles.navButton}>
+          <p style={Object.assign({}, styles.navText, styles.text)}>Settings</p>
+          <div className="nav-logo" style={styles.navLogo}>Logo</div>
+        </div>
+      </nav>
+      <div className="aid" style={styles.aid}>
+        <div className="aid-arrow" style={styles.aidEdge}> --- swipe arrow ---</div>
+        <div className="aid-swipe" style={styles.aidSwipe}>
+          <div style={styles.aidWrapper}>
+            <p>Swipe Left to add a Day to the Deadline</p>
+          </div>
+          <div className="hand-icon" style={Object.assign({}, styles.aidWrapper, styles.handIcon)}>Hand Icon</div>
+          <div style={styles.aidWrapper}>
+            <p style={styles.text}>Check or Swipe Right to Complete</p>
+          </div>
+        </div>
+        <p className="aid-delete" style={styles.aidEdge}>Long press to start deleting</p>
       </div>
-    </header>
-    <nav style={styles.nav}>
-      <div className="nav-button" style={styles.navButton}>
-        <p style={Object.assign({}, styles.navText, styles.text)}>History</p>
-        <div className="nav-logo" style={styles.navLogo}>Logo</div>
-      </div>
-      <div className="nav-button" style={styles.navButton}>
-        <p style={Object.assign({}, styles.navText, styles.text)}>Delete</p>
-        <div className="nav-logo" style={styles.navLogo}>Logo</div>
-      </div>
-      <div className="nav-button" style={styles.navButton}>
-        <p style={Object.assign({}, styles.navText, styles.text)}>Settings</p>
-        <div className="nav-logo" style={styles.navLogo}>Logo</div>
-      </div>
-    </nav>
-    <div className="now list" style={styles.list}>
-      <div className="list-title" style={styles.listTitleWrapper}>
-        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Now</h2>
-        <div className="list-icon" style={styles.listIcon}>Icon</div>
-      </div>
-      <ul style={styles.ul}>
-      {nowList.map((nowTask) => {
-          return (
-          <li style={styles.li}>
-          <input style={styles.input} className="checkbox" type="checkbox" name="finished" checked={nowTask.completed}></input>
-          <p style={styles.checkboxText} className="checkbox-text">{nowTask.title}</p>
-          </li>
-          );
-        })}
-      </ul>
-    </div>
-    <div className="aid" style={styles.aid}>
-    <div className="aid-arrow" style={styles.aidEdge}> --- swipe arrow ---</div>
-    <div className="aid-swipe" style={styles.aidSwipe}>
-    <div style={styles.aidWrapper}>
-      <p>Swipe Left to add a Day to the Deadline</p>
-    </div>
-    <div className="hand-icon" style={Object.assign({}, styles.aidWrapper, styles.handIcon)}>Hand Icon</div>
-    <div style={styles.aidWrapper}>
-      <p style={styles.text}>Check or Swipe Right to Complete</p>
-    </div>
-    </div>
-    <p className="aid-delete" style={styles.aidEdge}>Long press to start deleting</p>
-    </div>
-    <div className="later list" style={styles.list}>
-    <div className="list-title" style={styles.listTitleWrapper}>
-        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Later</h2>
-        <div className="list-icon" style={styles.listIcon}>Icon</div>
-      </div>
-      <ul style={styles.ul}>
-        {laterList.map((laterTask) => {
-          return (
-          <li style={styles.li}>
-          <input style={styles.input} className="checkbox" type="checkbox" name="finished" checked={laterTask.completed}></input>
-          <p style={styles.checkboxText} className="checkbox-text">{laterTask.title}</p>
-          </li>
-          );
-        })}
-      </ul>
-    </div>
     <footer style={styles.footer}>
       <button style={styles.newTaskButton}>New Task</button>
     </footer>
