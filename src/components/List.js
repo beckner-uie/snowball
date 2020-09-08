@@ -11,7 +11,7 @@ function List(props) {
   return (
     <ul style={styles}>
     {props.map((task) => {
-    Task(task);
+    return Task(task);
     })}
     </ul>
   );
