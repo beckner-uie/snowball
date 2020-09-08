@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import List from './components/List.js';
+import Topbar from './components/Topbar.js';
 
 let nowList = [{
   id: 1,
@@ -45,12 +46,6 @@ let laterList = [{
  };
 
 const styles = {
-  header: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
-    backgroundColor: '#e5e5e5',
-  },
   nav: {
     display: 'flex',
     width: '100%',
@@ -89,28 +84,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  userInfo: {
-    display: 'flex',
-    margin: 'auto',
-    flexFlow: 'column wrap',
-    alignContent: 'space-around',
-    justifyContent: 'space-around',
-  },
-  userPicture: {
-    width: '50px',
-    height: '50px',
-    backgroundColor: 'gray',
-    margin: 'auto',
-    marginTop: '10px',
-    textAlign: 'center',
-    alignSelf: 'center',
-  },
-  userName: {
-    flexFlow: 'row wrap',
-    margin: '5px',
-    fontSize: '14px',
-    textAlign: 'center',
   },
   navButton: {
     display: 'flex',
@@ -187,13 +160,7 @@ const styles = {
 function App() {
   return (
     <div className="main">
-      <header style={styles.header}>
-        <h1>Snowball</h1>
-        <div style={styles.userInfo} className="user-info">
-          <img style={styles.userPicture} src={user.avatar} alt="your avatar"></img>
-          <p style={Object.assign({}, styles.userName, styles.text)} className="user-name">{user.name}</p>
-        </div>
-      </header>
+      {Topbar(user)}
       <nav style={styles.nav}>
         <div className="nav-button" style={styles.navButton}>
           <p style={Object.assign({}, styles.navText, styles.text)}>History</p>
