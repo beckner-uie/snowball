@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import Task from src/components/Task.js;
-import List from src/components/List.js;
+import List from './components/List.js';
 
 let nowList = [{
   id: 1,
@@ -39,21 +38,11 @@ let laterList = [{
   description: "your description",
   completed: false
 }];
-const lists = [{
-now: {
-  name: "Now",
-  list: nowList
-},
-later: {
-  name: "Later",
-  list: laterList
-}
-}];
-const user = {
-  name: "Casey Beckner",
-  id: 1,
-  avatar: "https://www.placecage.com/200/300"
-};
+ const user = {
+   name: "Casey Beckner",
+   id: 1,
+   avatar: "https://www.placecage.com/200/300"
+ };
 
 const styles = {
   header: {
@@ -167,6 +156,32 @@ const styles = {
   handIcon: {
     backgroundColor: 'gray',
   },
+  list: {
+    width: '100%',
+    fontFamily: '"Ropa Sans", sans-serif',
+  },
+  listTitleWrapper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    border: 'black solid 1px',
+  },
+  listTitle: {
+    height: '95px',
+    fontSize: '36px',
+    padding: '20px',
+    margin: 'auto 0',
+    textTransform: 'uppercase',
+    lineHeight: '55px',
+  },
+  listIcon: {
+    width: '40px',
+    height: '40px',
+    margin: 'auto 40px',
+    backgroundColor: 'gray',
+  },
+  text: {
+    fontFamily: '"Ropa Sans", sans-serif',
+  },
 }
 
 function App() {
@@ -193,6 +208,13 @@ function App() {
           <div className="nav-logo" style={styles.navLogo}>Logo</div>
         </div>
       </nav>
+      <div style={styles.list}>
+        <div className="list-title" style={styles.listTitleWrapper}>
+        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Now</h2>
+        <div className="list-icon" style={styles.listIcon}>Icon</div>
+        </div>
+        {List(nowList)}
+      </div>
       <div className="aid" style={styles.aid}>
         <div className="aid-arrow" style={styles.aidEdge}> --- swipe arrow ---</div>
         <div className="aid-swipe" style={styles.aidSwipe}>
@@ -205,6 +227,13 @@ function App() {
           </div>
         </div>
         <p className="aid-delete" style={styles.aidEdge}>Long press to start deleting</p>
+      </div>
+      <div style={styles.list}>
+        <div className="list-title" style={styles.listTitleWrapper}>
+        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Later</h2>
+        <div className="list-icon" style={styles.listIcon}>Icon</div>
+        </div>
+        {List(laterList)}
       </div>
     <footer style={styles.footer}>
       <button style={styles.newTaskButton}>New Task</button>

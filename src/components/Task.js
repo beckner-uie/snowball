@@ -1,5 +1,4 @@
 import React from 'react';
-import App from src/App.js;
 
 const taskStyles = {
   li: {
