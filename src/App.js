@@ -3,48 +3,6 @@ import './App.css';
 import List from './components/List.js';
 import Topbar from './components/Topbar.js';
 
-let nowList = [{
-  id: 1,
-  title: "Item One",
-  description: "your description",
-  completed: false
-},
-{
-  id: 2,
-  title: "Item Two",
-  description: "your description",
-  completed: false
-},
-{
-  id: 3,
-  title: "Item Three",
-  description: "your description",
-  completed: false
-}];
-let laterList = [{
-  id: 1,
-  title: "Item One",
-  description: "your description",
-  completed: false
-},
-{
-  id: 2,
-  title: "Item Two",
-  description: "your description",
-  completed: false
-},
-{
-  id: 3,
-  title: "Item Three",
-  description: "your description",
-  completed: false
-}];
- const user = {
-   name: "Casey Beckner",
-   id: 1,
-   avatar: "https://www.placecage.com/200/300"
- };
-
 const styles = {
   nav: {
     display: 'flex',
@@ -157,10 +115,58 @@ const styles = {
   },
 }
 
-function App() {
+class App extends React.Component {
+  state = {
+    nowList: [
+  {
+    id: 1,
+    title: "Item One",
+    description: "your description",
+    completed: false
+  },
+  {
+    id: 2,
+    title: "Item Two",
+    description: "your description",
+    completed: false
+  },
+  {
+    id: 3,
+    title: "Item Three",
+    description: "your description",
+    completed: false
+  }
+  ],
+  laterList: [
+  {
+    id: 1,
+    title: "Item One",
+    description: "your description",
+    completed: false
+  },
+  {
+    id: 2,
+    title: "Item Two",
+    description: "your description",
+    completed: false
+  },
+  {
+    id: 3,
+    title: "Item Three",
+    description: "your description",
+    completed: false
+  }
+  ],
+  user: {
+     name: "Casey Beckner",
+     id: 1,
+     avatar: "https://www.placecage.com/200/300"
+   }
+  }
+  render () {
   return (
     <div className="main">
-      {Topbar(user)}
+      {Topbar(this.state.user)}
       <nav style={styles.nav}>
         <div className="nav-button" style={styles.navButton}>
           <p style={Object.assign({}, styles.navText, styles.text)}>History</p>
@@ -180,7 +186,7 @@ function App() {
         <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Now</h2>
         <div className="list-icon" style={styles.listIcon}>Icon</div>
         </div>
-        {List(nowList)}
+        {List(this.state.nowList)}
       </div>
       <div className="aid" style={styles.aid}>
         <div className="aid-arrow" style={styles.aidEdge}> --- swipe arrow ---</div>
@@ -200,12 +206,12 @@ function App() {
         <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Later</h2>
         <div className="list-icon" style={styles.listIcon}>Icon</div>
         </div>
-        {List(laterList)}
+        {List(this.state.laterList)}
       </div>
     <footer style={styles.footer}>
       <button style={styles.newTaskButton}>New Task</button>
     </footer>
     </div>
-  );
+  );}
 }
 export default App;
