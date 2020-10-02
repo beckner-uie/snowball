@@ -1,3 +1,4 @@
+
 import React from 'react';
 const styles = {
 info: {
@@ -33,15 +34,17 @@ header: {
   },
 }
 
-function Topbar(props) {
+export default class Topbar extends React.Component {
+  constructor(props) {
+      super(props)
+    }
+    render() {
     return (
     <header style={styles.header}>
         <h1>Snowball</h1>
         <div style={styles.info} className="user-info">
-          <img style={styles.avatar} src={props.avatar} alt="your avatar"></img>
-          <p style={Object.assign({}, styles.name, styles.text)} className="user-name">{props.name}</p>
+          <img style={styles.avatar} src={this.props.user.avatar} alt="your avatar"></img>
+          <p style={Object.assign({}, styles.name, styles.text)} className="user-name">{this.props.user.name}</p>
         </div>
     </header>
-    )}
-
-    export default Topbar;
+    )}}

@@ -1,9 +1,15 @@
 import React from 'react';
 import './App.css';
-import List from './components/List.js';
+import Task from './components/Task.js';
 import Topbar from './components/Topbar.js';
+import Footer from './components/Footer.js';
 
 const styles = {
+  ul: {
+    listStyle: 'none',
+    margin: '0',
+    padding: '0',
+  },
   nav: {
     display: 'flex',
     width: '100%',
@@ -21,13 +27,15 @@ const styles = {
     width: '100%',
     backgroundColor: '#e5e5e5',
     display: 'flex',
+    flexFlow: 'column',
     justifyContent: 'space-around',
+    padding: '20px',
   },
   newTaskButton: {
     height: '100px',
     width: '225px',
     margin: 'auto',
-    marginTop: '75px',
+    marginTop: '30px',
     marginBottom: '30px',
     fontFamily: '"Barlow", sans-serif',
     letterSpacing: '.05em',
@@ -108,7 +116,6 @@ const styles = {
     width: '40px',
     height: '40px',
     margin: 'auto 40px',
-    backgroundColor: 'gray',
   },
   text: {
     fontFamily: '"Ropa Sans", sans-serif',
@@ -117,100 +124,49 @@ const styles = {
 
 class App extends React.Component {
   state = {
-    nowList: [
-  {
-    id: 1,
-    title: "Item One",
-    description: "your description",
-    completed: false
-  },
-  {
-    id: 2,
-    title: "Item Two",
-    description: "your description",
-    completed: false
-  },
-  {
-    id: 3,
-    title: "Item Three",
-    description: "your description",
-    completed: false
-  }
-  ],
-  laterList: [
-  {
-    id: 1,
-    title: "Item One",
-    description: "your description",
-    completed: false
-  },
-  {
-    id: 2,
-    title: "Item Two",
-    description: "your description",
-    completed: false
-  },
-  {
-    id: 3,
-    title: "Item Three",
-    description: "your description",
-    completed: false
-  }
-  ],
+    list: [],
+  nextId: 1,
   user: {
      name: "Casey Beckner",
      id: 1,
      avatar: "https://www.placecage.com/200/300"
    }
   }
+  constructor(props)
+  {
+    super(props);
+    this.addTodo = this.addTodo.bind(this);
+    this.deleteToDo= this.deleteToDo.bind(this);
+  }
+  addTodo(todoTitle) {
+    let list = this.state.list.slice();
+    list.push({id: this.state.nextId, title: todoTitle})
+    this.setState({
+      list: list,
+      nextId: ++this.state.nextId
+    });
+  }
+  deleteToDo(id) {
+    this.setState({
+        list: this.state.list.filter((task) => task.id !== id)
+      });
+  }
+  
   render () {
   return (
     <div className="main">
-      {Topbar(this.state.user)}
-      <nav style={styles.nav}>
-        <div className="nav-button" style={styles.navButton}>
-          <p style={Object.assign({}, styles.navText, styles.text)}>History</p>
-          <div className="nav-logo" style={styles.navLogo}>Logo</div>
-        </div>
-        <div className="nav-button" style={styles.navButton}>
-          <p style={Object.assign({}, styles.navText, styles.text)}>Delete</p>
-          <div className="nav-logo" style={styles.navLogo}>Logo</div>
-        </div>
-        <div className="nav-button" style={styles.navButton}>
-          <p style={Object.assign({}, styles.navText, styles.text)}>Settings</p>
-          <div className="nav-logo" style={styles.navLogo}>Logo</div>
-        </div>
-      </nav>
+      <Topbar user={this.state.user} />
       <div style={styles.list}>
         <div className="list-title" style={styles.listTitleWrapper}>
-        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Now</h2>
-        <div className="list-icon" style={styles.listIcon}>Icon</div>
+        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>To Do</h2>
         </div>
-        {List(this.state.nowList)}
+        <ul style={styles}>
+        {this.state.list.map((task) => {
+          return <Task task={task} key={task.id} id={task.id} deleteToDo={this.deleteToDo} />
+          })}
+        </ul>
       </div>
-      <div className="aid" style={styles.aid}>
-        <div className="aid-arrow" style={styles.aidEdge}> --- swipe arrow ---</div>
-        <div className="aid-swipe" style={styles.aidSwipe}>
-          <div style={styles.aidWrapper}>
-            <p>Swipe Left to add a Day to the Deadline</p>
-          </div>
-          <div className="hand-icon" style={Object.assign({}, styles.aidWrapper, styles.handIcon)}>Hand Icon</div>
-          <div style={styles.aidWrapper}>
-            <p style={styles.text}>Check or Swipe Right to Complete</p>
-          </div>
-        </div>
-        <p className="aid-delete" style={styles.aidEdge}>Long press to start deleting</p>
-      </div>
-      <div style={styles.list}>
-        <div className="list-title" style={styles.listTitleWrapper}>
-        <h2 style={Object.assign({}, styles.listTitle, styles.text)}>Later</h2>
-        <div className="list-icon" style={styles.listIcon}>Icon</div>
-        </div>
-        {List(this.state.laterList)}
-      </div>
-    <footer style={styles.footer}>
-      <button style={styles.newTaskButton}>New Task</button>
-    </footer>
+      <Footer todoTitle='' addTodo={this.addTodo} />
     </div>
   );}
 }
